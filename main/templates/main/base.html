@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %} | UserManage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!--for google icons-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,600,1,-25" />
+
+    <style>
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+            color: #818181;
+        }
+
+        .hover-underline-animation:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #818181;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .hover-underline-animation:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .myDIV:hover+.hide {
+            position: relative;
+            display: block;
+            color: rgb(84, 84, 84);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg py-2" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+
+            <span class="navbar-brand px-4">UserManage</span>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% if request.path == '/home' %}
+                    <li class="nav-item px-4 fw-bolder bg-info bg-opacity-10 border border-info rounded-4"
+                        style="font-family: Helvetica">
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item px-4 fw-semibold bg-black bg-opacity-10 rounded-4">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="px-2">
+                        <!--just to increase padding-->
+                    </li>
+
+                    {% if request.path == '/create_post' %}
+                    <li class="nav-item fw-bolder px-4 bg-info bg-opacity-10 border border-info rounded-4">
+                        <a class="nav-link active" aria-current="page" href="/create_post">Post</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item px-4 fw-semibold bg-black bg-opacity-10 rounded-4">
+                        <a class="nav-link" aria-current="page" href="/create_post">Post</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+
+                <!--Hidden text-->
+                <div class="px-4">
+                    <ul class="navbar-nav">
+                        <li class="px-4 myDIV">.</li>
+                        <li class="px-4 hide"> - Made using Django</li>
+                    </ul>
+                </div>
+
+                <!--to find path of current page-->
+                <!-- 
+                    <div class="px-4">
+                        <ul>
+                        <li>{{request.path}}</li>
+                        <li>{{request.get_full_path}}</li>
+                        <li>{{request.build_absolute_uri}}</li>
+                        <ul>
+                    </div>
+                -->
+
+            </div>
+
+            <div>
+                <ul class="navbar-nav">
+
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item dropdown pt-2 hover-underline-animation">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Hello {{user.username}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="/password_change">Change Password</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item px-4">
+                        <a class="nav-link active" aria-current="page" href="/logout">
+                            <button class="btn btn-outline-danger px-3 py-2" type="button">Logout
+                                <span class="material-symbols-outlined" style="vertical-align: -6px;">logout</span>
+                            </button>
+                        </a>
+                    </li>
+
+                    {% else %}
+                    <li class="nav-item px-4">
+                        <a class="nav-link active" aria-current="page" href="/login">
+                            <button class="btn btn-outline-primary px-3 py-2" type="button">Login
+                                <span class="material-symbols-outlined" style="vertical-align: -6px;">login</span>
+                            </button>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        {% block content %}{% endblock content %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous">    
+    </script>
+
+</body>
+
+</html>

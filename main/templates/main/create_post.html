@@ -1,0 +1,23 @@
+
+{% extends 'main/base.html' %}
+
+{% block title %}Create a post{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<h3 class="py-2">Create a post</h3>
+
+<form method="POST">
+    {% csrf_token %} 
+    
+    {{form|crispy}} <!--it will automatically create a form-->
+    
+    
+    <button type="submit" class="btn btn-success px-4">Add post
+        <span class="material-symbols-outlined py-1" style="vertical-align: -6px;">add</span>
+    </button>
+</form>
+
+{% endblock content %}
