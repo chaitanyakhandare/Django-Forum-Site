@@ -14,7 +14,7 @@ class Post(models.Model):
         return self.title + "\n" + self.description
     
 
-# # to create new group, add permission to that group, and add any user to that group "programmatically" write this below commands..... but doing this using django-admin-panel is more easy
+# # to create new group, add PERMISSIONS to that group, and add any USER to that group "programmatically" write this below commands..... but doing this using django-admin-panel is more easy
 # 
 # >>> from django.contrib.auth.models import Group, Permission, User
 # >>> from django.contrib.contenttypes.models import ContentType
