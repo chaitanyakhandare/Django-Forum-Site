@@ -30,3 +30,4 @@ class Post(models.Model):
 # >>> user = User.objects.filter(username="chaitanya")
 # >>> mod.user_set.add(user.first())
 # 
+#
