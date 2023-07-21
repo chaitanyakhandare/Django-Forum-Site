@@ -1,7 +1,7 @@
 # Django-forum-site
 Actually i didn't purchased any domain. So, below is the public IP address.
 
-You can access this website by clicking this: http://13.126.102.215
+You can access this website by clicking this: http://15.206.170.238
 
 I deployed this website on EC2 instance provided by AWS. And used SQLlite as default database used by Django. 
 
