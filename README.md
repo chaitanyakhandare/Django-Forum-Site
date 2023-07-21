@@ -5,9 +5,8 @@ You can access this website by clicking this: http://13.126.102.215
 
 I deployed this website on EC2 instance provided by AWS. And used SQLlite as default database used by Django. 
 
-And also used NGINX which acts as a reverse proxy for a Gunicorn server, passing all dynamic requests to Gunicorn, and as a regular server for static files, handling this task on its own.
+Also used GUNICORN as the WSGI server which takes care of everything which happens in-between the web server and my web application & NGINX as a reverse proxy for a GUNICORN server.
 
-Also used GUNICORN which takes care of everything which happens in-between the web server and my web application.
 
 # About this project:
 
